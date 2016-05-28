@@ -54,10 +54,10 @@ end
 
 function fudge.normalize(level)
     level_key = to_number(level)
-    if level_key < min_level then
+    if level_key < min_level_key then
         level_key = min_level_key
-    elseif level_key > max_level then
-        level_key = max_level
+    elseif level_key > max_level_key then
+        level_key = max_level_key
     end
     return to_string(level_key)
 end
