@@ -53,6 +53,7 @@ local function to_string(level_key)
 end
 
 function fudge.normalize(level)
+    assert(fudge.is_valid(level), level.." is not valid FUDGE level")
     level_key = to_number(level)
     if level_key < min_level_key then
         level_key = min_level_key
@@ -96,6 +97,8 @@ end
 
 function fudge.diff(x, y)
     -- Return a difference between two FUDGE levels
+    assert(fudge.is_valid(x), x.." is not valid FUDGE level")
+    assert(fudge.is_valid(y), y.." is not valid FUDGE level")
     return to_number(x) - to_number(y)
 end
 
@@ -109,6 +112,7 @@ end
 function fudge.add_modifiers(level, ...)
     -- Return a level with appended modifiers
     -- modifiers can be numbers or table of numbers
+    assert(fudge.is_valid(level), level.." is not valid FUDGE level")
     level = to_number(level)
     for _, i in ipairs({...}) do
         if type(i) == "table" then
