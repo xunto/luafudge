@@ -4,6 +4,9 @@
 Set a language of FUDGE levels. May be "english", "russian" or "german".
 By default, english used. Other languages may be added later.
 
+## fudge.is_valid(level)
+Returns `true` if `level` is valid FUDGE level or `false` otherwise.
+
 ## fudge.normalize(level)
 Returns a normalized level to diceroll. As stated in FUDGE rulebook,
 minimal level is `terrible` and maximum is `legendary`. So you can do
