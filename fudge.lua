@@ -2,7 +2,6 @@ fudge = {}
 
 -- Language to use
 -- one may set fudge.lang variable to language she needs
-lang = fudge.lang or "default"
 
 local levels = {}
 levels.russian = {
@@ -34,10 +33,17 @@ local default_level_key = 6
 local min_level_key = 5
 local max_level_key = 13
 
+fudge.lang = "default"
+
+function fudge.set_lang(lang)
+    assert(type(lang) == string, "lang mus be string")
+    assert(levels[lang], "No such language: "..lang)
+    fudge.lang = lang
+end
 
 -- HACK for speed
 local levels_tmp = {}
-for key, level in pairs(levels[lang]) do
+for key, level in pairs(levels[fudge.lang]) do
     levels_tmp[level] = key
 end
 local function fudge.to_number(level_text) 
@@ -46,7 +52,7 @@ end
 
 local function fudge.to_string(level_key)
     assert(type(level_key) == "number", "Argument must be a number")
-    return assert(levels[lang][level_key], "Level not found")
+    return assert(levels[fudge.lang][level_key], "Level not found")
 end
 
 function fudge.normalize(level)
