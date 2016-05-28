@@ -1,8 +1,5 @@
 fudge = {}
 
--- Language to use
--- one may set fudge.lang variable to language she needs
-
 local levels = {}
 levels.russian = {
     "хуже некуда", "совсем-совсем-совсем ужасно" , "совсем-совсем ужасно",
