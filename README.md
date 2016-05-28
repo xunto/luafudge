@@ -1,5 +1,9 @@
 # luafudge
 
+## fudge.lang
+This variable represents language of FUDGE levels. May be "english",
+"russian", "german". If not set, english used.
+
 ## fudge.normalize(level)
 Returns a normalized level to diceroll. As stated in FUDGE rulebook,
 minimal level is `terrible` and maximum is `legendary`. So you can do
