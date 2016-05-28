@@ -62,6 +62,15 @@ function fudge.normalize(level)
     return to_string(level_key)
 end
 
+function fudge.is_valid(level)
+    level = to_number(level)
+    if level then
+        return true
+    else
+        return false
+    end
+end
+
 function fudge.roll()
     -- Return a 4-table of dices in numeric format
     local dices = {}
