@@ -9,7 +9,7 @@ levels.russian = {
 }
 levels.english = {
     "i'm a looser, baby", "very very very terrible", "very very terrible",
-    "very terrible", "terrible", "poor", "mediocre"
+    "very terrible", "terrible", "poor", "mediocre",
     "fair", "good", "great", "superb", "legendary",
     "legendary+", "legendary++", "legendary+++", "like a boss"
 }
@@ -38,13 +38,12 @@ function fudge.set_lang(lang)
     fudge.lang = lang
 end
 
--- HACK for speed
-local levels_tmp = {}
-for key, level in pairs(levels[fudge.lang]) do
-    levels_tmp[level] = key
-end
-local function fudge.to_number(level_text) 
-    return levels_tmp[level_text]
+local function fudge.to_number(level_text)
+    for key, level in pairs(levels[fudge.lang]) do
+        if level == level_test then
+            return key
+        end
+    end
 end
 
 local function fudge.to_string(level_key)
