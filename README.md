@@ -1,8 +1,8 @@
 # luafudge
 
-## fudge.lang
-This variable represents language of FUDGE levels. May be "english",
-"russian", "german". If not set, english used.
+## fudge.set_lang(lang)
+Set a language of FUDGE levels. May be "english", "russian" or "german".
+By default, english used. Other languages may be added later.
 
 ## fudge.normalize(level)
 Returns a normalized level to diceroll. As stated in FUDGE rulebook,
