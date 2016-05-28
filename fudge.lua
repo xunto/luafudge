@@ -22,7 +22,7 @@ levels.german = {
 -- TODO: other languages
 
 levels.default = levels.english
--- because english if locale C standard
+-- because english is locale C standard
 -- and original FUDGE rulebook is in english
 
 -- FIXME: magic numbers. Make it using levels.default
@@ -87,8 +87,6 @@ end
 
 function fudge.diff(x, y)
     -- Return a difference between two FUDGE levels
-    -- example:
-    --  fudge.diff("хорошо", "посредственно") == 2
     return to_number(x) - to_number(y)
 end
 
@@ -102,11 +100,6 @@ end
 function fudge.add_modifiers(level, ...)
     -- Return a level with appended modifiers
     -- modifiers can be numbers or table of numbers
-    -- examples:
-    --  fudge.add_modifiers("плохо", +1, +1, -3) == "ужасно"
-    --  fudge.add_modifiers("плохо", {+1, +1, -3}) == "ужасно"
-    --  fudge.add_modifiers("хорошо", fudge.dices()) will return
-    --  "ужасно" if dices will misscrit
     level = to_number(level)
     for _, i in ipairs({...}) do
         if type(i) == "table" then
