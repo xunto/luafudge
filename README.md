@@ -1,15 +1,15 @@
 # luafudge
 
-## `fudge.normalize(level)`
+## fudge.normalize(level)
 Returns a normalized level to diceroll. As stated in FUDGE rulebook,
 minimal level is `terrible` and maximum is `legendary`. So you can do
 `fudge.normalize("very very terrible")` and get `terrible` in result.
 If `level` is already accepted FUDGE level, level returned.
 
-## `fudge.roll()`
+## fudge.roll()
 Roll 4dF and return 4-table as result. e.g. {-1, -1, 0, +1}
 
-## `fudge.dices_to_string(dices)`
+## fudge.dices_to_string(dices)
 Convert 4-string of dices (e.g. returned by `fudge.roll()`) to
 string of pluses, minuses and equal signs for fancy look.
 `assert(fudge.dices_to_string({-1, -1, 0, +1}) == "--=+")`
