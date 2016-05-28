@@ -30,7 +30,7 @@ and any number of *numbers* or *tables of numbers*.
 
 `assert(fudge.add_modifiers("poor", {+1, +1, -3}) == "terrible")`
 
-`fudge.add_modifiers("good", fudge.dices())` will return "terrible"
+`fudge.add_modifiers("good", fudge.roll())` will return "terrible"
 if dices will misscrit.
 
 ----

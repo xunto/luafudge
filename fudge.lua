@@ -33,32 +33,33 @@ local max_level_key = 13
 fudge.lang = "default"
 
 function fudge.set_lang(lang)
-    assert(type(lang) == string, "lang mus be string")
+    assert(type(lang) == "string", "lang mus be string")
     assert(levels[lang], "No such language: "..lang)
     fudge.lang = lang
 end
 
-local function fudge.to_number(level_text)
+local function to_number(level_text)
     for key, level in pairs(levels[fudge.lang]) do
-        if level == level_test then
+        if level == level_text then
             return key
         end
     end
 end
 
-local function fudge.to_string(level_key)
+local function to_string(level_key)
     assert(type(level_key) == "number", "Argument must be a number")
-    return assert(levels[fudge.lang][level_key], "Level not found")
+    assert(levels[fudge.lang][level_key], "Level not found")
+    return levels[fudge.lang][level_key]
 end
 
 function fudge.normalize(level)
-    level_key = fudge.to_number(level)
+    level_key = to_number(level)
     if level_key < min_level then
         level_key = min_level_key
     elseif level_key > max_level then
         level_key = max_level
     end
-    return fudge.to_string(level_key)
+    return to_string(level_key)
 end
 
 function fudge.roll()
@@ -88,10 +89,10 @@ function fudge.diff(x, y)
     -- Return a difference between two FUDGE levels
     -- example:
     --  fudge.diff("хорошо", "посредственно") == 2
-    return fudge.to_number(x) - fudge.to_number(y)
+    return to_number(x) - to_number(y)
 end
 
-local function fudge.add_modifiers_table(level_key, modifiers)
+local function add_modifiers_table(level_key, modifiers)
     for _, i in ipairs(modifiers) do
        level_key = level_key + i
     end
@@ -106,13 +107,13 @@ function fudge.add_modifiers(level, ...)
     --  fudge.add_modifiers("плохо", {+1, +1, -3}) == "ужасно"
     --  fudge.add_modifiers("хорошо", fudge.dices()) will return
     --  "ужасно" if dices will misscrit
-    level = fudge.to_number(level)
+    level = to_number(level)
     for _, i in ipairs({...}) do
         if type(i) == "table" then
-            level = fudge.add_modifiers_table(level, i)
+            level = add_modifiers_table(level, i)
         else
             level = level + i
         end
     end
-    return fudge.to_string(level)
+    return to_string(level)
 end
