@@ -32,3 +32,6 @@ and any number of *numbers* or *tables of numbers*.
 
 `fudge.add_modifiers("good", fudge.dices())` will return "terrible"
 if dices will misscrit.
+
+----
+Authors: hunterdelyx1, vegasd
