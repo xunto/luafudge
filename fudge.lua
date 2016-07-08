@@ -1,4 +1,4 @@
-fudge = {}
+local fudge = {}
 
 local levels = {}
 levels.russian = {
@@ -26,7 +26,7 @@ levels.default = levels.english
 -- and original FUDGE rulebook is in english
 
 -- FIXME: magic numbers. Make it using levels.default
-local default_level_key = 6
+-- local default_level_key = 6
 local min_level_key = 5
 local max_level_key = 13
 
@@ -54,7 +54,7 @@ end
 
 function fudge.normalize(level)
     assert(fudge.is_valid(level), level.." is not valid FUDGE level")
-    level_key = to_number(level)
+    local level_key = to_number(level)
     if level_key < min_level_key then
         level_key = min_level_key
     elseif level_key > max_level_key then
@@ -75,7 +75,7 @@ end
 function fudge.roll()
     -- Return a 4-table of dices in numeric format
     local dices = {}
-    for i = 1, 4 do
+    for _ = 1, 4 do
         table.insert(dices, math.random(-1, 1))
     end
     return dices
@@ -123,3 +123,5 @@ function fudge.add_modifiers(level, ...)
     end
     return to_string(level)
 end
+
+return fudge
